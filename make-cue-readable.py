@@ -4,14 +4,18 @@
 
 import re
 import sys
-#file_path = "tracklist.txt"
-track_count = 1
+
+# CHANGE FOR YOUR NEEDS
+file = "tracklist.txt" # generated file
+# CHANGE NOTHING BELOW
+
 # The pattern are orded after their occurence
 track_pattern = r"TRACK\s(\d+)\sAUDIO"
 title_pattern = r"TITLE\s\"(.*)\""
 performer_pattern = r"PERFORMER\s\"(.*)\""
 index_pattern = r"INDEX\s[\d]*\s(\d{2}:\d{2}:\d{2})"
 
+track_count = 1
 num = ""
 title = ""
 performer = ""
@@ -44,7 +48,7 @@ try:
                 index = index_match[0]
                 print(index)
                 # append file and set all vars to ""
-                with open("newtracklist.txt", "a") as newfile:
+                with open(file, "a") as newfile:
                     newfile.writelines("[{}] {}, {}, {} \n"
                             .format(num, title, performer, index))
                     num = ""
